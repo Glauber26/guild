@@ -3,9 +3,12 @@
 require_once('banco.php');
 
 $nome = $_POST['nome'];
+$sobrenome = $_POST['sobrenome'];
 $nick = $_POST['nick'];
+$tipo = $_POST['tipo'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
+
 
 $query_select = "SELECT nick FROM usuario WHERE nick = '$nick'";
 $select = mysql_query($query_select,$connect);
@@ -22,7 +25,7 @@ if($nick == "" || $nick == null){
         die();
 
       }else{
-        $query = "INSERT INTO usuario (nome,nick,email,senha) VALUES ('$nome','$nick','$email', '$senha')";
+        $query = "INSERT INTO usuario (nome,sobrenome,nick,tipo,email,senha) VALUES ('$nome','$sobrenome','$nick','$tipo','$email', '$senha')";
         $insert = mysql_query($query,$connect);
         if($insert){
           echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='index.php'</script>";

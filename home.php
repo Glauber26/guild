@@ -31,7 +31,7 @@ if(isset($_SESSION['user'])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#">Guild Manager</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['user']['nome'] ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Editar perfil</a></li>
+							<li><a href="/guild/consulta_usuario.php">Editar perfil</a></li>
 							<li><a href="/guild/logout.php">Sair</a></li>
 						</ul>
 					</li>

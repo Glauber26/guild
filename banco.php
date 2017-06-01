@@ -1,4 +1,4 @@
 <?php
 session_start();
 $connect = mysql_connect('localhost','root','');
-$db = mysql_select_db('guild1');
+$db = mysql_select_db('bd_guildmanager');

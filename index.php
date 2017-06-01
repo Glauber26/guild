@@ -28,8 +28,8 @@ if(isset($_SESSION['user'])){
 	<div class="form">
 
 		<ul class="tab-group">
-			<li class="tab active"><a href="#signup">Sign Up</a></li>
-			<li class="tab"><a href="#login">Log In</a></li>
+			<li class="tab active"><a href="#signup">Cadastre - se</a></li>
+			<li class="tab"><a href="#login">Acesse sua conta</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -46,13 +46,31 @@ if(isset($_SESSION['user'])){
 							<input type="text" name="nome" required autocomplete="off" />
 						</div>
 
+
 						<div class="field-wrap">
 							<label>
-								Nick<span class="req">*</span>
+								Sobrenome<span class="req">*</span>
 							</label>
-							<input type="text" name="nick" required autocomplete="off"/>
+							<input type="text" name="sobrenome" required autocomplete="off"/>
 						</div>
 					</div>
+
+
+					<div class="field-wrap">
+						<label>
+							Nick<span class="req">*</span>
+						</label>
+						<input type="text" name="nick" required autocomplete="off" />
+					</div>
+
+
+					<div class="field-wrap">
+						<label>
+							Tipo de usuário<span class="req">*</span>
+						</label>
+						<input type="text" name="tipo" required autocomplete="off" />
+					</div>
+
 
 					<div class="field-wrap">
 						<label>
@@ -68,6 +86,14 @@ if(isset($_SESSION['user'])){
 						<input type="password" name="senha" required autocomplete="off"/>
 					</div>
 
+					<div class="field-wrap">
+						<label>
+							Repita sua senha<span class="req">*</span>
+						</label>
+						<input type="password" name="repitasenha" required autocomplete="off"/>
+					</div>
+
+
 					<button type="submit" class="button button-block"/>Cadastre - se</button>
 
 				</form>
@@ -75,7 +101,7 @@ if(isset($_SESSION['user'])){
 			</div>
 
 			<div id="login">   
-				<h1>Welcome Back!</h1>
+				<h1>Bem vindo!</h1>
 
 				<form action="login.php" method="post">
 
@@ -93,9 +119,9 @@ if(isset($_SESSION['user'])){
 						<input type="password" name="senha" required autocomplete="off"/>
 					</div>
 
-					<p class="forgot"><a href="#">Forgot Password?</a></p>
+					<p class="forgot"><a href="#">Esqueceu a senha?</a></p>
 
-					<button class="button button-block"/>Log In</button>
+					<button class="button button-block"/>Entrar</button>
 
 				</form>
 
