@@ -6,12 +6,16 @@ if (isset($_POST['salvar'])) {
     $nomeEvento = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $data = $_POST['data'];
+    $usuarioAlterador['usuario_nick'];
+  //  $id = $_POST['id'];
 
 
     if ($nomeEvento == "" || $nomeEvento == null) {
         $erro = 'O campo nome do evento deve ser preenchido';
-    } else {
-        $query = "UPDATE evento SET nome='$nomeEvento', descricao='$descricao', data='$data' WHERE usuario_nick='" . $_SESSION['user']['nick'] . "";
+    }
+    else
+    {
+        $query = "UPDATE evento SET nome='$nomeEvento', descricao='$descricao', data='$data' WHERE usuario_nick = '" . $_SESSION['user']['nick'] . "'  AND id='$id'";
         $insert = mysql_query($query, $connect);
         if ($insert) {
             $sucesso = 'Evento atualizado com sucesso!';
@@ -30,7 +34,7 @@ $array = mysql_fetch_array($select);
 
 <html>
 <head>
-    <title>Exemplo</title>
+    <title>Guild Manager - Eventos</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -58,14 +62,14 @@ $array = mysql_fetch_array($select);
                 <input type="hidden" id="nome" name="nome" value="<?= $array['nome'] ?>">
 
                 <div class="form-group">
-                    <label for="dinheiro" class="col-sm-2 control-label">Nome</label>
+                    <label for="nome" class="col-sm-2 control-label">Nome</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
                                value="<?= $array['nome'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="raca" class="col-sm-2 control-label">Descrição</label>
+                    <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descricao"
                                value="<?= $array['descricao'] ?>">
@@ -74,7 +78,7 @@ $array = mysql_fetch_array($select);
 
 
                 <div class="form-group">
-                    <label for="raca" class="col-sm-2 control-label">Data</label>
+                    <label for="data" class="col-sm-2 control-label">Data</label>
                     <div class="col-sm-10">
                         <input type="datetime-local" class="form-control" id="data" name="data" placeholder="Data"
                                value="<?= $array['data'] ?>">

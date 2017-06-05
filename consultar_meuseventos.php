@@ -21,7 +21,6 @@ $select = mysql_query($query_select, $connect);
         <div class="panel-heading">Cadastro de Eventos</div>
         <div class="panel-body">
             <a href="/guild/cadastrar_evento.php" class="btn btn-default">Novo Evento</a>
-            <a href="/guild/consultar_meuseventos.php" class="btn btn-default">Meus Eventos</a>
             <hr>
             <?php if (isset($erro)) { ?>
                 <div class="alert alert-danger" role="alert"><?= $erro ?></div>
@@ -37,6 +36,7 @@ $select = mysql_query($query_select, $connect);
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Data</th>
+                    <th>Ações</th>
 
                 </tr>
                 </thead>
@@ -48,7 +48,22 @@ $select = mysql_query($query_select, $connect);
                         <td><?= $array['descricao'] ?></td>
                         <td><?= $array['data'] ?></td>
 
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        - aria-haspopup="true" aria-expanded="false">
+                                    Ações <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/guild/editar_evento.php?nome=<?= $array['nome'] ?>">Editar</a></li>
+                                    <li><a href="/guild/remover_evento.php?nome=<?= $array['nome'] ?>">Remover</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
                     </tr>
+
                 <?php } ?>
                 </tbody>
             </table>
