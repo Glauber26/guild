@@ -7,10 +7,11 @@ if (isset($_POST['salvar'])) {
     $dinheiro = $_POST['dinheiro'];
     $raca = $_POST['raca'];
 
+
     if ($nomePersonagem == "" || $nomePersonagem == null) {
         $erro = 'O campo personagem deve ser preenchido';
     } else {
-        $query = "UPDATE personagem SET dinheiro='$dinheiro', raca='$raca',classe_nome='teste' WHERE usuario_nick='" . $_SESSION['user']['nick'] . "' AND nome='$nomePersonagem'";
+        $query = "UPDATE personagem SET dinheiro='$dinheiro', raca='$raca' WHERE usuario_nick='" . $_SESSION['user']['nick'] . "' AND nome='$nomePersonagem'";
         $insert = mysql_query($query, $connect);
         if ($insert) {
             $sucesso = 'Personagem atualizado com sucesso!';
@@ -73,8 +74,8 @@ $array = mysql_fetch_array($select);
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a href="/guild/personagens.php" class="btn btn-default">Cancelar</a>
-                        <button type="submit" class="btn btn-default" name="salvar">Salvar</button>
+                        <a href="/guild/personagens.php" class="btn btn-default">Voltar</a>
+                        <button type="submit" class="btn btn-default" name="salvar">Salvar Edição</button>
                     </div>
                 </div>
             </form>

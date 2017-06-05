@@ -91,7 +91,7 @@ $select = mysql_query($query_select, $connect);
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a href="/guild/personagens.php" class="btn btn-default">Cancelar</a>
+                        <a href="/guild/personagens.php" class="btn btn-default">Voltar</a>
                         <button type="submit" class="btn btn-default" name="salvar">Salvar</button>
                     </div>
                 </div>
