@@ -14,7 +14,6 @@ if (isset($_POST['salvar'])) {
         $erro = 'O nome da classe deve ser preenchido';
     } else {
         $query = "INSERT INTO classe (nome) VALUES ('$nomeClasse')";
-
         $insert = mysql_query($query, $connect);
         if ($insert) {
             $sucesso = 'Classe cadastrada com sucesso!';
@@ -61,8 +60,10 @@ if (isset($_POST['salvar'])) {
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a href="/guild/personagens.php" class="btn btn-default">Cancelar</a>
+
                         <button type="submit" class="btn btn-default" name="salvar">Salvar</button>
+                        <a href="/guild/classe.php" class="btn btn-default">Voltar</a>
+
                     </div>
                 </div>
             </form>

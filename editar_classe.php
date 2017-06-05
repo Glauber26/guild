@@ -14,6 +14,7 @@ if (isset($_POST['salvar'])) {
 
         $url = "/guild/editar_classe.php?nome=$nomeClasse";
         header("location:$url");
+
         if ($insert) {
             $sucesso = 'Classe atualizada com sucesso!';
         } else {
@@ -66,7 +67,7 @@ $array = mysql_fetch_array($select);
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <a href="/guild/classe.php" class="btn btn-default">Cancelar</a>
+                        <a href="/guild/classe.php" class="btn btn-default">Voltar</a>
                         <button type="submit" class="btn btn-default" name="salvar">Salvar</button>
                     </div>
                 </div>
