@@ -17,6 +17,7 @@
             <li><a href="/guild/classe.php">Classes</a></li>
             <li><a href="/guild/evento.php">Eventos</a></li>
             <li><a href="/guild/item.php">Itens</a></li>
+            <li><a href="/guild/bancoguild.php">Banco da Guilda</a></li>
         </ul>
 
 
