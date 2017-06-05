@@ -13,12 +13,11 @@ if (isset($_POST['salvar'])) {
         $insert = mysql_query($query, $connect);
 
         $url = "/guild/editar_classe.php?nome=$nomeClasse";
-        header("location:$url");
 
         if ($insert) {
             $sucesso = 'Classe atualizada com sucesso!';
         } else {
-            $erro = 'Não foi possível atualizar essa classe';
+            $erro = 'Não foi possível atualizar essa classe, a mesma pode estar sendo usada por um personagem!';
         }
 
     }

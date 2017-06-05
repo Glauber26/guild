@@ -4,7 +4,7 @@ require_once('banco.php');
 
 if (isset($_POST['salvar'])) {
     $nomeItem = $_POST['nome'];
-    $tipo = $_POST['tipo'];
+    $tipoItem = $_POST['tipo'];
     $valor = $_POST['valor'];
     $posse = $_POST['posse'];
 
@@ -15,7 +15,7 @@ if (isset($_POST['salvar'])) {
     if ($nomeItem == "" || $nomeItem == null) {
         $erro = 'O campo nome do item deve ser preenchido';
     } else {
-        $query = "INSERT INTO item (nome, tipo, valor, posse) VALUES ('$nomeItem','$tipo','$valor', '" . $_SESSION['user']['nick'] . "', '$classe')";
+        $query = "INSERT INTO item (nome, tipo, valor, posse) VALUES ('$nomeItem','$tipoItem','$valor','$posse')";
 
         $insert = mysql_query($query, $connect);
         if ($insert) {
@@ -27,14 +27,14 @@ if (isset($_POST['salvar'])) {
     }
 }
 
-$query_select = "SELECT * FROM classe";
+$query_select = "SELECT * FROM item";
 $select = mysql_query($query_select, $connect);
 
 ?>
 
 <html>
 <head>
-    <title>Exemplo</title>
+    <title>Item - Cadastro</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -65,26 +65,22 @@ $select = mysql_query($query_select, $connect);
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="dinheiro" class="col-sm-2 control-label">Tipo</label>
+                    <label for="tipo" class="col-sm-2 control-label">Tipo</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="tipo" name="tipo" placeholder="Tipo">
+                        <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Tipo">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="raca" class="col-sm-2 control-label">Valor</label>
+                    <label for="valor" class="col-sm-2 control-label">Valor</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="valor" name="valor" placeholder="Valor">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="classe" class="col-sm-2 control-label">Posse</label>
+                    <label for="posse" class="col-sm-2 control-label">Posse</label>
                     <div class="col-sm-10">
-                        <select name="posse" class="form-control">
-                            <?php while ($array = mysql_fetch_array($select)) { ?>
-                                <option value="<?= $array['nome'] ?>"><?= $array['nome'] ?></option>
-                            <?php } ?>
-                        </select>
+                        <input type="text" class="form-control" id="posse" name="posse" placeholder="Posse">
                     </div>
                 </div>
 

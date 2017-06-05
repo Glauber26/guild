@@ -6,7 +6,7 @@ if (isset($_POST['salvar'])) {
     $nomeClasse = $_POST['nome'];
 
 
-    $query_select = "SELECT * FROM classe WHERE nome = '$nomeClasse'";
+
     $select = mysql_query($query_select, $connect);
     $array = mysql_fetch_array($select);
 
