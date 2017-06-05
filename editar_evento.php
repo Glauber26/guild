@@ -7,25 +7,25 @@ if (isset($_POST['salvar'])) {
     $descricao = $_POST['descricao'];
     $data = $_POST['data'];
 
-    $query_select = "SELECT * FROM evento";
-    $select = mysql_query($query_select, $connect);
-    $array = mysql_fetch_array($select);
 
     if ($nomeEvento == "" || $nomeEvento == null) {
-        $erro = 'O campo "Nome do Evento" deve ser preenchido';
+        $erro = 'O campo nome do evento deve ser preenchido';
     } else {
-        $query = "INSERT INTO evento (nome, descricao, data, usuario_nick) VALUES ('$nomeEvento','$descricao','$data', '" . $_SESSION['user']['nick'] . "')";
-
+        $query = "UPDATE evento SET nome='$nomeEvento', descricao='$descricao', data='$data' WHERE usuario_nick='" . $_SESSION['user']['nick'] . "";
         $insert = mysql_query($query, $connect);
-
         if ($insert) {
-            $sucesso = 'Evento cadastrado com sucesso!';
+            $sucesso = 'Evento atualizado com sucesso!';
         } else {
-            $erro = 'Não foi possível cadastrar esse evento';
+            $erro = 'Não foi possível atualizar esse evento';
         }
 
     }
 }
+
+$query_select = "SELECT * FROM evento WHERE nome= '" . $_GET['nome'] . "'";
+$select = mysql_query($query_select, $connect);
+$array = mysql_fetch_array($select);
+
 ?>
 
 <html>
@@ -33,6 +33,7 @@ if (isset($_POST['salvar'])) {
     <title>Exemplo</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body>
 
@@ -40,7 +41,7 @@ if (isset($_POST['salvar'])) {
 
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">Cadastro de evento</div>
+        <div class="panel-heading">Editar Evento</div>
         <div class="panel-body">
 
 
@@ -53,29 +54,39 @@ if (isset($_POST['salvar'])) {
             <?php } ?>
 
             <form class="form-horizontal" method="post">
+
+                <input type="hidden" id="nome" name="nome" value="<?= $array['nome'] ?>">
+
                 <div class="form-group">
-                    <label for="nome" class="col-sm-2 control-label">Nome</label>
+                    <label for="dinheiro" class="col-sm-2 control-label">Nome</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+                               value="<?= $array['nome'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="dinheiro" class="col-sm-2 control-label">Descrição</label>
+                    <label for="raca" class="col-sm-2 control-label">Descrição</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descricao">
+                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descricao"
+                               value="<?= $array['descricao'] ?>">
                     </div>
                 </div>
+
+
                 <div class="form-group">
                     <label for="raca" class="col-sm-2 control-label">Data</label>
                     <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" id="data" name="data" placeholder="Data">
+                        <input type="datetime-local" class="form-control" id="data" name="data" placeholder="Data"
+                               value="<?= $array['data'] ?>">
                     </div>
                 </div>
+
+
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <a href="/guild/evento.php" class="btn btn-default">Voltar</a>
-                        <button type="submit" class="btn btn-default" name="salvar">Salvar</button>
+                        <button type="submit" class="btn btn-default" name="salvar">Salvar Edição</button>
                     </div>
                 </div>
             </form>
