@@ -28,7 +28,7 @@ if (isset($_POST['salvar'])) {
         $insert = mysql_query($query, $connect);
 
         if ($insert) {
-            $sucesso = "Usuário inserido com sucesso!";
+            $sucesso = "Usuário alterado com sucesso!";
         } else {
             $erro = "Não foi possível atualizar";
         }
