@@ -10,6 +10,7 @@ if (isset($_SESSION['user'])) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +83,7 @@ if (isset($_SESSION['user'])) {
                     <hr>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="salvar" name="salvar" class="btn btn-default">Alterar</button>
+                            <button type="submit" id="salvar" name="salvar" class="btn btn-default">Realizar Cadastro</button>
                             <a class="btn" href="index.php" style="float: right">Já tem uma conta? Faça login aqui</a>
                         </div>
                     </div>
