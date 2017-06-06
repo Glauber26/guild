@@ -5,11 +5,6 @@ require_once('banco.php');
 if (isset($_POST['salvar'])) {
     $nomeClasse = $_POST['nome'];
 
-
-
-    $select = mysql_query($query_select, $connect);
-    $array = mysql_fetch_array($select);
-
     if ($nomeClasse == "" || $nomeClasse == null) {
         $erro = 'O nome da classe deve ser preenchido';
     } else {

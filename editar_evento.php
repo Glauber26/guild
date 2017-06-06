@@ -6,16 +6,13 @@ if (isset($_POST['salvar'])) {
     $nomeEvento = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $data = $_POST['data'];
-    $usuarioAlterador['usuario_nick'];
-  //  $id = $_POST['id'];
-
+    $id = $_GET['id'];
 
     if ($nomeEvento == "" || $nomeEvento == null) {
         $erro = 'O campo nome do evento deve ser preenchido';
-    }
-    else
-    {
+    } else {
         $query = "UPDATE evento SET nome='$nomeEvento', descricao='$descricao', data='$data' WHERE usuario_nick = '" . $_SESSION['user']['nick'] . "'  AND id='$id'";
+
         $insert = mysql_query($query, $connect);
         if ($insert) {
             $sucesso = 'Evento atualizado com sucesso!';
@@ -26,7 +23,7 @@ if (isset($_POST['salvar'])) {
     }
 }
 
-$query_select = "SELECT * FROM evento WHERE nome= '" . $_GET['nome'] . "'";
+$query_select = "SELECT * FROM evento WHERE id= '" . $_GET['id'] . "'";
 $select = mysql_query($query_select, $connect);
 $array = mysql_fetch_array($select);
 

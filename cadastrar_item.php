@@ -26,8 +26,11 @@ if (isset($_POST['salvar'])) {
 
     }
 }
-
+/*
 $query_select = "SELECT * FROM item";
+$select = mysql_query($query_select, $connect);*/
+
+$query_select = "SELECT * FROM personagem";
 $select = mysql_query($query_select, $connect);
 
 ?>
@@ -80,9 +83,12 @@ $select = mysql_query($query_select, $connect);
                 <div class="form-group">
                     <label for="posse" class="col-sm-2 control-label">Posse</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="posse" name="posse" placeholder="Posse">
+                        <select name="nome" class="form-control">
+                            <?php while ($array = mysql_fetch_array($select)) { ?>
+                                <option value="<?= $array['nome'] ?>"><?= $array['nome'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
-                </div>
 
                 <hr>
                 <div class="form-group">

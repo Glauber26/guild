@@ -2,7 +2,7 @@
 
 require_once('banco.php');
 
-$query_select = "SELECT * FROM evento";
+$query_select = "SELECT * FROM evento WHERE usuario_nick='" . $_SESSION['user']['nick'] . "'";
 $select = mysql_query($query_select, $connect);
 ?>
 <html>
@@ -56,8 +56,8 @@ $select = mysql_query($query_select, $connect);
                                     Ações <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/guild/editar_evento.php?nome=<?= $array['nome'] ?>">Editar</a></li>
-                                    <li><a href="/guild/remover_evento.php?nome=<?= $array['nome'] ?>">Remover</a></li>
+                                    <li><a href="/guild/editar_evento.php?id=<?= $array['id'] ?>">Editar</a></li>
+                                    <li><a href="/guild/remover_evento.php?id=<?= $array['id'] ?>">Remover</a></li>
                                 </ul>
                             </div>
                         </td>
