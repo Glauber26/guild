@@ -2,10 +2,11 @@
 
 require_once('banco.php');
 
-$query = "DELETE FROM evento WHERE nome='" . $_GET['nome'] . "'";
+
+$query = "DELETE FROM evento WHERE id='" . $_GET['id'] . "'";
 $insert = mysql_query($query, $connect);
 
-$url = '/guild/evento.php';
+$url = '/guild/consultar_meuseventos.php';
 header("location:$url");
 
 ?>
