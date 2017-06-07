@@ -53,9 +53,11 @@ if (isset($_SESSION['user'])) {
                     <div class="form-group">
                         <label for="tipo" class="col-sm-2 control-label">Tipo de usuário</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="tipo" name="tipo"
-                                   placeholder="Tipo de usuário"
-                                   required="required">
+                            <select class="form-control" id="tipo" name="tipo" required="required">
+                                <option value = "">Escolha o tipo de usuário</option>
+                                <option value = "Membro Comum">Membro Comum</option>
+                                <option value = "Sub Lider">Sub Líder</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -68,14 +70,14 @@ if (isset($_SESSION['user'])) {
                     <div class="form-group">
                         <label for="senha" class="col-sm-2 control-label">Insira uma senha</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="senha" name="senha"
+                            <input type="password" class="form-control" id="senha" name="senha" minlength = "5" maxlength = "10"
                                    placeholder="Insira uma senha" value="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="repitasenha" class="col-sm-2 control-label">Repita sua senha</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="repitasenha" name="repitasenha"
+                            <input type="password" class="form-control" id="repitasenha" name="repitasenha" minlength = "5 " maxlength = "10"
                                    placeholder="Repita sua senha"
                                    value="">
                         </div>
