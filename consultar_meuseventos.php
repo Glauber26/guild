@@ -21,6 +21,7 @@ $select = mysql_query($query_select, $connect);
         <div class="panel-heading">Cadastro de Eventos</div>
         <div class="panel-body">
             <a href="/guild/cadastrar_evento.php" class="btn btn-default">Novo Evento</a>
+            <a href="/guild/evento.php" class="btn btn-default">Todos os Eventos</a>
             <hr>
             <?php if (isset($erro)) { ?>
                 <div class="alert alert-danger" role="alert"><?= $erro ?></div>
