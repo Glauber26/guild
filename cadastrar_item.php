@@ -7,6 +7,7 @@ if (isset($_POST['salvar'])) {
     $tipoItem = $_POST['tipo'];
     $valor = $_POST['valor'];
     $posse = $_POST['posse'];
+    //$id = $_id['id'];
 
     $query_select = "SELECT * FROM item";
     $select = mysql_query($query_select, $connect);
@@ -15,9 +16,10 @@ if (isset($_POST['salvar'])) {
     if ($nomeItem == "" || $nomeItem == null) {
         $erro = 'O campo nome do item deve ser preenchido';
     } else {
-        $query = "INSERT INTO item (nome, tipo, valor, posse) VALUES ('$nomeItem','$tipoItem','$valor','$posse')";
+        $query = "INSERT INTO item (nome, tipo, valor, posse) VALUES ('$nomeItem','$tipoItem','$valor,'$posse')";
 
         $insert = mysql_query($query, $connect);
+        //var_dump($query);
         if ($insert) {
             $sucesso = 'Item cadastrado com sucesso!';
         } else {
@@ -83,7 +85,7 @@ $select = mysql_query($query_select, $connect);
                 <div class="form-group">
                     <label for="posse" class="col-sm-2 control-label">Posse</label>
                     <div class="col-sm-10">
-                        <select name="nome" class="form-control">
+                        <select name="posse" class="form-control">
                             <?php while ($array = mysql_fetch_array($select)) { ?>
                                 <option value="<?= $array['nome'] ?>"><?= $array['nome'] ?></option>
                             <?php } ?>
