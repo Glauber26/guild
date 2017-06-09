@@ -2,7 +2,9 @@
 
 require_once('banco.php');
 
-$query_select = "SELECT * FROM item";
+
+
+$query_select = "SELECT * from item";
 $select = mysql_query($query_select, $connect);
 ?>
 <html>
@@ -20,7 +22,8 @@ $select = mysql_query($query_select, $connect);
     <div class="panel panel-default">
         <div class="panel-heading">Cadastro de Itens</div>
         <div class="panel-body">
-            <a href="/guild/cadastrar_item.php" class="btn btn-default">Novo Item</a>
+            <a href="/guild/cadastrar_item.php" class="btn btn-default">Novo Item para o Personagem</a>
+            <a href="/guild/cadastrar_item_guilda.php" class="btn btn-default">Novo Item para a Guilda</a>
             <hr>
             <?php if (isset($erro)) { ?>
                 <div class="alert alert-danger" role="alert"><?= $erro ?></div>
