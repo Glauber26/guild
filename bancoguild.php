@@ -2,7 +2,7 @@
 
 require_once('banco.php');
 
-$query_select = "SELECT * FROM banco";
+$query_select = "SELECT sum(dinheiro) FROM personagem";
 $select = mysql_query($query_select, $connect);
 ?>
 <html>
@@ -18,21 +18,14 @@ $select = mysql_query($query_select, $connect);
 
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">Dinheiro</div>
+        <div class="panel-heading">Dinheiro em caixa</div>
         <div class="panel-body">
 
-            <?php if (isset($erro)) { ?>
-                <div class="alert alert-danger" role="alert"><?= $erro ?></div>
-            <?php } ?>
-
-            <?php if (isset($sucesso)) { ?>
-                <div class="alert alert-success" role="alert"><?= $sucesso ?></div>
-            <?php } ?>
 
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>Qauntia</th>
+                    <th>Quantidade</th>
 
                 </tr>
                 </thead>
@@ -40,10 +33,10 @@ $select = mysql_query($query_select, $connect);
 
                 <?php while ($array = mysql_fetch_array($select)) { ?>
                     <tr>
-                        <td><?= $array['dinheiro'] ?></td>
-
+                        <td>R$ <?= $array['sum(dinheiro)'] ?>,00</td>
 
                     </tr>
+
                 <?php } ?>
                 </tbody>
             </table>
