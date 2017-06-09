@@ -7,17 +7,17 @@ if (isset($_POST['salvar'])) {
     $tipoItem = $_POST['tipo'];
     $valor = $_POST['valor'];
     $posse = $_POST['posse'];
-    $personagem_nome = $_POST['posse'];
 
 
-    $query_select = "SELECT * FROM item";
+
+    $query_select = "SELECT * FROM itemguild";
     $select = mysql_query($query_select, $connect);
     $array = mysql_fetch_array($select);
 
     if ($nomeItem == "" || $nomeItem == null) {
         $erro = 'O campo nome do item deve ser preenchido';
     } else {
-        $query = "INSERT INTO `item` (`nome`, `tipo`, `valor`, `id`, `posse`, `personagem_nome`, `personagem_usuario_nick`) VALUES ('$nomeItem', '$tipoItem', '$valor', NULL, '$posse', '$posse', '" . $_SESSION['user']['nick'] . "')";
+        $query = "INSERT INTO `itemguild` (`nome`, `tipo`, `valor`, `id`, `posse`, `personagem_usuario_nick`) VALUES ('$nomeItem', '$tipoItem', '$valor', '', '$posse', '" . $_SESSION['user']['nick'] . "')";
         $insert = mysql_query($query, $connect);
         var_dump($query);
         if ($insert) {
@@ -30,11 +30,11 @@ if (isset($_POST['salvar'])) {
 }
 /*
 $query_select = "SELECT * FROM item";
-$select = mysql_query($query_select, $connect);*/
+$select = mysql_query($query_select, $connect);
 
 $query_select = "SELECT * FROM personagem ";
 $select = mysql_query($query_select, $connect);
-
+*/
 ?>
 
 <html>
@@ -88,9 +88,6 @@ $select = mysql_query($query_select, $connect);
                     <div class="col-sm-10">
                         <select name="posse" class="form-control">
                             <option>Guilda</option>
-                            <?php while ($array = mysql_fetch_array($select)) { ?>
-                                <option value="<?= $array['nome'] ?>"><?= $array['nome'] ?></option>
-                            <?php } ?>
                         </select>
                     </div>
 
