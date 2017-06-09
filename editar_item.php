@@ -12,21 +12,26 @@ if (isset($_POST['salvar'])) {
     if ($nome == "" || $nome == null) {
         $erro = 'O campo nome do item deve ser preenchido';
     } else {
-        $query = "UPDATE item SET nome='$nome', tipo='$tipo', valor='$valor', posse='$posse'  WHERE usuario_nick = '" . $_SESSION['user']['nick'] . "'  AND id='$id'";
+        $query = "UPDATE itemguild SET nome='$nome', tipo='$tipo', valor='$valor', posse='$posse'  WHERE personagem_usuario_nick = '" . $_SESSION['user']['nick'] . "' AND id='$id'";
 var_dump($query);
         $insert = mysql_query($query, $connect);
         if ($insert) {
-            $sucesso = 'Evento atualizado com sucesso!';
+            $sucesso = 'Item atualizado com sucesso!';
         } else {
-            $erro = 'Não foi possível atualizar esse evento';
+            $erro = 'Não foi possível atualizar esse item, pois não foi você quem o cadastrou';
         }
 
     }
 }
 
-$query_select = "SELECT * FROM item";
+$query_select = "SELECT * FROM itemguild WHERE id= '" . $_GET['id'] . "'";
 $select = mysql_query($query_select, $connect);
 $array = mysql_fetch_array($select);
+
+
+$query_select = "SELECT * FROM personagem ";
+$select = mysql_query($query_select, $connect);
+
 
 ?>
 
@@ -81,7 +86,7 @@ $array = mysql_fetch_array($select);
                     <div class="col-sm-10">
                         <select name="posse" class="form-control">
                             <?php while ($array = mysql_fetch_array($select)) { ?>
-                                <option value="<?= $array['posse'] ?>"><?= $array['posse'] ?></option>
+                                <option value="<?= $array['nome'] ?>"><?= $array['nome'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
