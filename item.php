@@ -4,7 +4,7 @@ require_once('banco.php');
 
 
 
-$query_select = "SELECT * from item";
+$query_select = "SELECT * from itemguild";
 $select = mysql_query($query_select, $connect);
 ?>
 <html>
@@ -57,8 +57,8 @@ $select = mysql_query($query_select, $connect);
                                         aria-haspopup="true" aria-expanded="false"> Ações <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/guild/editar_item.php?nome=<?= $array['nome'] ?>">Editar</a></li>
-                                    <li><a href="/guild/remover_item.php?nome=<?= $array['nome'] ?>">Remover</a></li>
+                                    <li><a href="/guild/editar_item.php?id=<?= $array['id'] ?>">Editar</a></li>
+                                    <li><a href="/guild/remover_item_guild.php?id=<?= $array['id'] ?>">Remover</a></li>
                                 </ul>
                             </div>
                         </td>
