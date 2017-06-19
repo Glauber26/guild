@@ -15,9 +15,10 @@
         <ul class="nav navbar-nav">
             <li><a href="/guild/personagens.php">Personagens</a></li>
             <li><a href="/guild/classe.php">Classes</a></li>
-            <li><a href="/guild/evento.php">Eventos</a></li>
+            <li><a href="/guild/evento.php">Eventos</a></li> 
             <li><a href="/guild/item.php">Itens</a></li>
             <li><a href="/guild/bancoguild.php">Banco da Guilda</a></li>
+            <li><a href="/guild/relatorio1.php">Financeiro</a></li>
         </ul>
 
 

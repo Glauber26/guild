@@ -2,8 +2,6 @@
 
 require_once('banco.php');
 
-
-
 $query_select = "SELECT * from itemguild";
 $select = mysql_query($query_select, $connect);
 ?>
