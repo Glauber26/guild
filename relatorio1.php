@@ -1,12 +1,12 @@
 <?php
 
-    require_once('banco.php');
+require_once('banco.php');
 
-    $query_select = "SELECT * FROM personagem WHERE usuario_nick = '" . $_SESSION['user']['nick'] . "'";
-    $select = mysql_query($query_select, $connect); 
-    $contD = 0;
-    $contI = 0;
-    $total = 0;
+$query_select = "SELECT * FROM personagem WHERE usuario_nick = '" . $_SESSION['user']['nick'] . "'";
+$select = mysql_query($query_select, $connect);
+$contD = 0;
+$contI = 0;
+$total = 0;
 ?>
 <html>
 <head>
@@ -23,8 +23,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Dinheiro dos Personagens</div>
         <div class="panel-body">
-           <!-- <a href="/guild/cadastro_personagem.php" class="btn btn-default">Novo personagem</a>-->
+            <!-- <a href="/guild/cadastro_personagem.php" class="btn btn-default">Novo personagem</a>-->
             <!--<hr>-->
+            <a href="#" class="btn btn-default imprimir">Imprimir</a><br><br>
             <?php if (isset($erro)) { ?>
                 <div class="alert alert-danger" role="alert"><?= $erro ?></div>
             <?php } ?>
@@ -46,15 +47,16 @@
                 <tbody>
 
                 <?php
-                    while ($array = mysql_fetch_array($select)) { ?>
+                while ($array = mysql_fetch_array($select)) { ?>
                     <tr>
-                        <td><?= $array['nome']?></td>
-                        <td><?= $array['dinheiro']; $contD+=$array['dinheiro'] ?></td>
+                        <td><?= $array['nome'] ?></td>
+                        <td><?= $array['dinheiro'];
+                            $contD += $array['dinheiro'] ?></td>
 
-                    <?php
+                        <?php
                         $query_select1 = "SELECT * FROM item WHERE posse = '" . $array['nome'] . "'";
                         $select1 = mysql_query($query_select1, $connect);
-                        $num_rows = mysql_num_rows($select1); 
+                        $num_rows = mysql_num_rows($select1);
                         $i = $num_rows;
                         $j = $num_rows;
                         $string = '';
@@ -63,40 +65,43 @@
                         $valor = array();
                         $person = 0;
 
-                        while ($array1 = mysql_fetch_array($select1)) { 
-                                 $contI+=$array1['valor'];
+                        while ($array1 = mysql_fetch_array($select1)) {
+                            $contI += $array1['valor'];
 
-                                 if($num_rows>1){
-                                 $itens[$i] = $array1['nome'];
-                                 $i--;
-                                 $string = implode(", ", $itens);                                
-                                 
-                                 $valor[$j] = $array1['valor'];
-                                 $j--;
-                                 $preco = implode(", ", $valor); 
+                            if ($num_rows > 1) {
+                                $itens[$i] = $array1['nome'];
+                                $i--;
+                                $string = implode(", ", $itens);
 
-                                 $person+=$array1['valor'];
-                                 $person1 = $person + $array['dinheiro'] ?>
+                                $valor[$j] = $array1['valor'];
+                                $j--;
+                                $preco = implode(", ", $valor);
 
-                               <?php if(!$i) echo '<td>'. $string. '</td>
-                                <td>' . $preco. '</td>
-                                <td>' . $person. '</td>' ?>
+                                $person += $array1['valor'];
+                                $person1 = $person + $array['dinheiro'] ?>
 
-                             <?php }else{ ?>
+                                <?php if (!$i) echo '<td>' . $string . '</td>
+                                <td>' . $preco . '</td>
+                                <td>' . $person . '</td>' ?>
+
+                            <?php } else { ?>
                                 <td><?= $array1['nome'] ?></td>
                                 <td><?= $array1['valor'] ?></td>
-                                <td><?= $array1['valor'] ?></td>                                
-                             <?php } ?>
+                                <td><?= $array1['valor'] ?></td>
+                            <?php } ?>
 
-                    <?php } ?> 
+                        <?php } ?>
                     </tr>
                 <?php } ?>
                 </tbody>
             </table>
 
-           <br/><p><center style="color:red">Total em Dinheiro = <?= $contD ?><br/>
-                                         Total em Itens = <?= $contI ?><br/>
-                                         TOTAL = <?=$contI+$contD?></center></p>
+            <br/>
+            <p>
+            <center style="color:red">Total em Dinheiro = <?= $contD ?><br/>
+                Total em Itens = <?= $contI ?><br/>
+                TOTAL = <?= $contI + $contD ?></center>
+            </p>
 
         </div>
     </div>
@@ -104,6 +109,11 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/index.js"></script>
+<script !src="">
+    $('.imprimir').click(function () {
+        window.print();
+    });
+</script>
 <!--<?php echo($cont); ?>-->
 </body>
 </html>
