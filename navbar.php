@@ -18,7 +18,8 @@
             <li><a href="/guild/evento.php">Eventos</a></li> 
             <li><a href="/guild/item.php">Itens</a></li>
             <li><a href="/guild/bancoguild.php">Banco da Guilda</a></li>
-            <li><a href="/guild/relatorio1.php">Financeiro</a></li>
+            <li><a href="/guild/relatorio1.php">Relatório Financeiro</a></li>
+            <li><a href="/guild/relatorio 2.php">Relatório de sessão</a></li>
         </ul>
 
 

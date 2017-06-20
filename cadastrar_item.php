@@ -19,7 +19,7 @@ if (isset($_POST['salvar'])) {
     } else {
         $query = "INSERT INTO `item` (`nome`, `tipo`, `valor`, `id`, `posse`, `personagem_nome`, `personagem_usuario_nick`) VALUES ('$nomeItem', '$tipoItem', '$valor', NULL, '$posse', '$posse', '" . $_SESSION['user']['nick'] . "')";
         $insert = mysql_query($query, $connect);
-        var_dump($query);
+
         if ($insert) {
             $sucesso = 'Item cadastrado com sucesso!';
         } else {

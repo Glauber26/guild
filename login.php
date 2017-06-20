@@ -10,9 +10,11 @@ $select = mysql_query($query_select, $connect);
 $array = mysql_fetch_array($select);
 
 // Achei o usuário
-if($array['achei'] == 1) {
-  
-  $_SESSION['user'] = $array;
+if ($array['achei'] == 1) {
+    $_SESSION['user'] = $array;
+
+    $sql = "INSERT INTO logins (usuario_nick) VALUES ('" . $array['nick'] . "')";
+    $select = mysql_query($sql, $connect);
 // Não achei
 } else {
 
